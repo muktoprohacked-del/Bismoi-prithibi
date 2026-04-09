@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Official Rewards 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF3D00;
+            --bg: #0A0A0B;
+            --card-bg: #161618;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+            --accent: #00E676;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg);
+            font-family: 'Hind Siliguri', sans-serif;
+            color: var(--text-white);
+            display: flex; justify-content: center;
+        }
+
+        .container {
+            width: 100%; max-width: 414px;
+            min-height: 100vh; padding: 20px;
+            box-sizing: border-box; display: flex; flex-direction: column;
+        }
+
+        /* অফার ডিটেইলস কার্ড (আকর্ষণীয় অংশ) */
+        .offer-banner {
+            background: linear-gradient(135deg, #FF3D00, #D50000);
+            border-radius: 20px; padding: 20px;
+            margin-bottom: 25px; position: relative;
+            box-shadow: 0 10px 30px rgba(255, 61, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .offer-banner::after {
+            content: ""; position: absolute; top: -20px; right: -20px;
+            width: 100px; height: 100px; background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .offer-title { font-size: 24px; font-weight: 700; margin: 0; }
+        .offer-details { display: flex; gap: 15px; margin-top: 15px; }
+        .detail-item { background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 8px; font-size: 13px; }
+
+        /* ছোট সিম কার্ড ভিউ */
+        .section-label { font-size: 15px; color: var(--text-gray); margin-bottom: 12px; font-weight: 600; }
+        
+        .operator-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+
+        .op-card {
+            background: var(--card-bg);
+            border: 1px solid #282828;
+            border-radius: 12px;
+            padding: 10px 15px; /* ছোট সাইজ */
+            display: flex; align-items: center;
+            cursor: pointer; transition: 0.2s;
+        }
+
+        .op-card.selected {
+            border-color: var(--primary);
+            background: rgba(255, 61, 0, 0.05);
+        }
+
+        /* ছোট আইকন সার্কেল */
+        .op-icon {
+            width: 35px; height: 35px;
+            background: #252525; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: var(--text-gray);
+            margin-right: 15px; font-size: 14px;
+        }
+
+        .selected .op-icon { background: var(--primary); color: #fff; }
+        .op-name { font-size: 16px; font-weight: 500; }
+
+        /* ইনপুট ও বাটন */
+        .input-group { margin-top: auto; }
+        input {
+            width: 100%; padding: 16px; background: #1c1c1e; border: 1px solid #333;
+            border-radius: 14px; color: white; font-size: 17px; box-sizing: border-box; 
+            text-align: center; outline: none; margin-bottom: 12px;
+        }
+        input:focus { border-color: var(--primary); }
+
+        .btn-main {
+            width: 100%; background: var(--primary); color: white; border: none; padding: 16px;
+            border-radius: 14px; font-size: 18px; font-weight: 700;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(255, 61, 0, 0.3);
+        }
+
+        /* Step 2 */
+        #step2 { display: none; text-align: center; animation: fadeInUp 0.5s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .success-card { background: var(--card-bg); border-radius: 20px; padding: 30px 20px; margin-top: 30px; border: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="step1">
+        <div class="offer-banner">
+            <p style="font-size: 12px; opacity: 0.8; margin-bottom: 5px;">পহেলা বৈশাখ অফার ২০২৬</p>
+            <h1 class="offer-title">৫৭ জিবি ডাটা উপহার</h1>
+            <div class="offer-details">
+                <div class="detail-item">মেয়াদ: ৩০ দিন</div>
+                <div class="detail-item">মূল্য: ০.০০ ৳</div>
+            </div>
+            <div style="margin-top: 15px; font-size: 12px; color: #FFD600; font-weight: 600;">✓ লিমিটেড অফার</div>
+        </div>
+
+        <div class="section-label">সিম অপারেটর নির্বাচন করুন</div>
+        <div class="operator-grid">
+            <div class="op-card" onclick="selectOp(this)">
+                <div class="op-icon">G</div>
+                <div class="op-name">Grameenphone</div>
+            </div>
+            <div class="op-card" onclick="selectOp(this)">
+                <div class="op-icon">R</div>
+                <div class="op-name">Robi Axiata</div>
+            </div>
+            <div class="op-card" onclick="selectOp(this)">
+                <div class="op-icon">B</div>
+                <div class="op-name">Banglalink</div>
+            </div>
+            <div class="op-card" onclick="selectOp(this)">
+                <div class="op-icon">A</div>
+                <div class="op-name">Airtel</div>
+            </div>
+            <div class="op-card" onclick="selectOp(this)">
+                <div class="op-icon">T</div>
+                <div class="op-name">Teletalk</div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <input type="tel" id="mobile" placeholder="আপনার ১১ ডিজিটের নম্বর" maxlength="11">
+            <button class="btn-main" onclick="next()">অফারটি গ্রহণ করুন</button>
+        </div>
+    </div>
+
+    <div id="step2">
+        <div class="success-card">
+            <div style="font-size: 50px;">🎁</div>
+            <h2 style="margin: 15px 0 10px;">রিকোয়েস্ট সফল!</h2>
+            <p style="color: var(--text-gray); font-size: 14px; line-height: 1.6;">৫৭ জিবি ডাটা সচল করতে নিচের লিঙ্কটি কপি করে আপনার ৫ জন বন্ধুকে পাঠিয়ে দিন। শেয়ার করা শেষ হলে নিচের বাটনে ক্লিক করুন।</p>
+            
+            <div id="shareUrl" style="background: #000; padding: 12px; border-radius: 10px; font-size: 11px; color: var(--accent); border: 1px dashed #444; margin: 20px 0; word-break: break-all;"></div>
+            
+            <button class="btn-main" onclick="finish()">অ্যাক্টিভেট সম্পন্ন করুন</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isSelected = false;
+    const finalAdLink = "https://www.profitablecpmratenetwork.com/qwhju6e1td?key=9a53fd559d95951737db0a111c327362";
+
+    document.getElementById('shareUrl').innerText = window.location.href;
+
+    function selectOp(el) {
+        document.querySelectorAll('.op-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        isSelected = true;
+    }
+
+    function next() {
+        const phone = document.getElementById('mobile').value;
+        if(!isSelected || phone.length < 11) {
+            alert("অনুগ্রহ করে অপারেটর এবং সঠিক নম্বর দিন।");
+            return;
+        }
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+    }
+
+    function finish() {
+        alert("ভেরিফিকেশন সম্পন্ন হচ্ছে... দয়া করে অপেক্ষা করুন।");
+        window.location.href = finalAdLink;
+    }
+</script>
+
+</body>
+</html>
